@@ -12,6 +12,13 @@ function buildTable(data) {
 
     //loop through object in ufo data and append rows
     ufo.forEach((dataRow) => {
+        //append a rows to the tbody
         var row = tbody.append("tr");
-    }) 
+
+        //loop through each field in the variable dataRow then add each value to a cell
+        Object.values(dataRow).forEach((val) => {
+            var cell = row.append("td");
+            cell.text(val);
+        });
+    });
 }
