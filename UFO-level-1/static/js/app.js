@@ -1,7 +1,7 @@
-// from data.js
-var tableData = data;
+// UFO-level-1
 
-// YOUR CODE HERE!
-//selecting tbody and saving it as a variable
+// Get the data from data.js and copy it into a new array
+var ufoData = data;
+
+// get table references
 var tbody = d3.select("tbody");
-
