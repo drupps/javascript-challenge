@@ -1,53 +1,57 @@
-// UFO-level-1
-
-//put the data into an array named
 var ufo = data;
 
-//get table references
+//figuring out the table
 var tbody = d3.select("tbody");
-console.log("tbody")
+console.log(tbody);
 
-function buildTable(data) {
-    //clear out existing data
-    tbody.html("");
+function buildTable(ufo) {
+  //clearing existing
+  tbody.html("");
 
-    //loop through object in ufo data and append rows
-    ufo.forEach((dataRow) => {
-        //append a rows to the tbody
-        var row = tbody.append("tr");
+  //loop through the data and append the rows to the table
+  ufo.forEach((dataRow) => {
+    //append a row to the table body
+    var row = tbody.append("tr");
+    console.log(row);
 
-        //loop through each field in the variable dataRow then add each value to a cell
-        Object.values(dataRow).forEach((value) => {
-            var cell = row.append("td");
-            cell.text(value);
-        });
-    });
+    //loop through each field and add it to a cell
+    Object.values(dataRow).forEach((val) => {
+      var cell = row.append("td");
+        cell.text(val);
+        console.log(val);
+      });
+  });
 }
-console.log(buildTable)
-// 
+
+//function to handle the clicks :)
 function handleClick() {
 
-      //f'ing refresh
-    d3.event.preventDefault();
+  //f'ing refresh 
+  d3.event.preventDefault();
 
-    //get the date from the button
-    var date = d3.select("#datetime").property("value");
-    console.log(date)
-    let filteredData = ufo;
-    console.log(filteredData)
-    //if a date was entered, begin filtering data
-    if (date) {
+  //get the date from the button
+  var date = d3.select("#datetime").property("value");
+  console.log(date);
 
-        //keep rows that match filtering data
-        filteredData = filteredData.filter(row => row.datetime === date);
-    }
-    console.log(date)
-    //build a table with the filtered data
-    buildTable(filteredData);
+  var filteredData = ufo;
+  console.log(filteredData)
+
+  //filter using date entered
+  if (date) {
+    console.log(date);
+
+    //apply the dated entered to the rows
+    filteredData = filteredData.filter(row => row.datetime === date);
+    console.log(filteredData);
+  }
+
+ //build the filtered table based on date selected
+  buildTable(filteredData);
 }
 
 //button click
 d3.selectAll("#filter-btn").on("click", handleClick);
+//i'm not sure how to console.log a button click
 
-//default data when page loads for first time
+//load default
 buildTable(ufo);
