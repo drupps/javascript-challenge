@@ -4,7 +4,7 @@
 var ufo = data;
 
 //get table references
-var tbody = d3.select("tbody");
+var tbody = d3.select('tbody');
 
 function buildTable(data) {
     //clear out existing data
@@ -13,7 +13,7 @@ function buildTable(data) {
     //loop through object in ufo data and append rows
     ufo.forEach((dataRow) => {
         //append a rows to the tbody
-        var row = tbody.append("tr");
+        var row = tbody.append('tr');
 
         //loop through each field in the variable dataRow then add each value to a cell
         Object.values(dataRow).forEach((val) => {
@@ -22,3 +22,14 @@ function buildTable(data) {
         });
     });
 }
+
+// 
+function handleClick() {
+
+    // get the datetime value from the filter button
+    var date = d3.select('#datetime')
+}
+
+
+
+buildTable(uf);
